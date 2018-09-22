@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Student, type: :model do
   # Association test
   # ensure Student model has a 1:m relationship with the Registration model
-  it { should have_many(:registration).dependent(:destroy) }
+  it { should have_many(:registrations).dependent(:destroy) }
   # Validation tests
   # ensure columns name, cpf, birth_date, phone, gender and payment_method.
   it { should validate_presence_of(:name) }
