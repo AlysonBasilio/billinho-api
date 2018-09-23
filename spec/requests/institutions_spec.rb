@@ -39,7 +39,7 @@ RSpec.describe 'Institutions API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/institution', params: { name: 'ITA', institution_type: 'Universidade' } }
+      before { post '/institutions', params: { cnpj: '01251289632', institution_type: 'Universidade' } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -47,7 +47,7 @@ RSpec.describe 'Institutions API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Validation failed: cpnj can't be blank/)
+          .to match(/Validation failed: Name can't be blank/)
       end
     end
   end
