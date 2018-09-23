@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :registrations do
     resources :invoices
   end
+  resources :invoices
 end
