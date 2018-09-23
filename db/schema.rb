@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_22_165033) do
+ActiveRecord::Schema.define(version: 2018_09_23_020548) do
 
   create_table "institutions", force: :cascade do |t|
     t.string "name", null: false
@@ -46,14 +46,16 @@ ActiveRecord::Schema.define(version: 2018_09_22_165033) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "name"
-    t.string "cpf"
+    t.string "name", null: false
+    t.string "cpf", null: false
     t.date "birth_date"
     t.integer "phone"
-    t.string "gender"
-    t.string "payment_method"
+    t.integer "gender", default: 0
+    t.integer "payment_method", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cpf"], name: "index_students_on_cpf", unique: true
+    t.index ["name"], name: "index_students_on_name", unique: true
   end
 
 end

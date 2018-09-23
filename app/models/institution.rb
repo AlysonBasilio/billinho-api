@@ -1,5 +1,5 @@
 class Institution < ApplicationRecord
-  # enum declaration
+  # enum declarations
   enum institution_type: {Universidade: 0, Escola: 1, Creche: 2}
 
   # model association

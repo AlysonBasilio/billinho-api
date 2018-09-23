@@ -8,8 +8,11 @@ RSpec.describe Student, type: :model do
   # ensure columns name, cpf, birth_date, phone, gender and payment_method.
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:cpf) }
-  it { should validate_presence_of(:birth_date) }
-  it { should validate_presence_of(:phone) }
   it { should validate_presence_of(:gender) }
   it { should validate_presence_of(:payment_method) }
+  it { should validate_uniqueness_of(:name).ignoring_case_sensitivity }
+  it { should validate_uniqueness_of(:cpf).ignoring_case_sensitivity }
+  it { should validate_numericality_of(:cpf) }
+  it { should define_enum_for(:gender).with(M: 0, F: 1) }
+  it { should define_enum_for(:payment_method).with(Boleto: 0, Cartao: 1) }
 end
