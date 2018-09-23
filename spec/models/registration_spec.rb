@@ -12,6 +12,7 @@ RSpec.describe Registration, type: :model do
   it { should validate_presence_of(:invoice_qty) }
   it { should validate_presence_of(:expiration_date) }
   it { should validate_presence_of(:course) }
+  # Validate restrictions
   it { should validate_numericality_of(:value).is_greater_than(0) }
   it { should validate_numericality_of(:invoice_qty).is_greater_than(1) }
   it { should validate_inclusion_of(:expiration_date).in_range(1..31) }
