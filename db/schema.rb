@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_23_022556) do
+ActiveRecord::Schema.define(version: 2018_09_23_024359) do
 
   create_table "institutions", force: :cascade do |t|
     t.string "name", null: false
@@ -33,12 +33,12 @@ ActiveRecord::Schema.define(version: 2018_09_23_022556) do
   end
 
   create_table "registrations", force: :cascade do |t|
-    t.decimal "value"
-    t.integer "invoice_qty"
-    t.integer "expiration_date"
-    t.string "course"
-    t.integer "institution_id"
-    t.integer "student_id"
+    t.decimal "value", null: false
+    t.integer "invoice_qty", null: false
+    t.integer "expiration_date", null: false
+    t.string "course", null: false
+    t.integer "institution_id", null: false
+    t.integer "student_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["institution_id"], name: "index_registrations_on_institution_id"
