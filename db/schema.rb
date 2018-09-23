@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_22_155146) do
+ActiveRecord::Schema.define(version: 2018_09_22_165033) do
 
   create_table "institutions", force: :cascade do |t|
-    t.string "name"
-    t.string "cnpj"
-    t.string "type"
+    t.string "name", null: false
+    t.string "cnpj", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "institution_type", default: 0
+    t.index ["cnpj"], name: "index_institutions_on_cnpj", unique: true
+    t.index ["name"], name: "index_institutions_on_name", unique: true
   end
 
   create_table "invoices", force: :cascade do |t|
