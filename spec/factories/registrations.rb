@@ -4,7 +4,11 @@ FactoryBot.define do
     invoice_qty { Faker::Number.number(2) }
     expiration_date { Faker::Number.between(1, 31) }
     course { Faker::Lorem.word }
-    institution_id { nil }
-    student_id { nil }
+    institution
+    student
+
+    after(:create) do |registration|
+      create_list(:invoice, registration.invoice_qty, registration: registration)
+    end
   end
 end

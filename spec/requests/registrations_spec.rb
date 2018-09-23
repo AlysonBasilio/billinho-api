@@ -4,6 +4,8 @@ RSpec.describe 'Registrations API', type: :request do
   # initialize test data
   let!(:registrations) { create_list(:registration, 10) }
   let(:registration_id) { registrations.first.id }
+  let(:institution_id) { registrations.first.institution.id }
+  let(:student_id) { registrations.first.student.id }
 
   # Test suite for GET /registrations
   describe 'GET /registrations' do
@@ -52,13 +54,13 @@ RSpec.describe 'Registrations API', type: :request do
   # Test suite for POST /registrations
   describe 'POST /registrations' do
     # valid payload
-    let(:valid_attributes) { { name: 'ITA', cnpj: '01254789632', registration_type: 'Universidade' } }
+    let(:valid_attributes) { { value: '9000.00', invoice_qty: '10', expiration_date: '15', course: 'COMP', institution: institution_id, student: student_id } }
 
     context 'when the request is valid' do
       before { post '/registrations', params: valid_attributes }
 
       it 'creates a registration' do
-        expect(json['name']).to eq('ITA')
+        expect(json['value']).to eq(9000)
       end
 
       it 'returns status code 201' do
@@ -67,7 +69,7 @@ RSpec.describe 'Registrations API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/registrations', params: { cnpj: '01251289632', registration_type: 'Universidade' } }
+      before { post '/registrations', params: { value: 9000, expiration_date: 15, course: 'COMP', institution: institution_id, student: student_id } }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -75,7 +77,7 @@ RSpec.describe 'Registrations API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Validation failed: Name can't be blank/)
+          .to match(/Validation failed: Invoice_qty can't be blank/)
       end
     end
   end
