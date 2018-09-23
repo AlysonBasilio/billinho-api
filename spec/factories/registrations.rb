@@ -4,7 +4,7 @@ FactoryBot.define do
     invoice_qty { Faker::Number.positive.number(2) }
     expiration_date { Faker::Number.within(1..31) }
     course { Faker::Lorem.word }
-    institution_id nil
-    student_id nil
+    institution_id { nil }
+    student_id { nil }
   end
 end
