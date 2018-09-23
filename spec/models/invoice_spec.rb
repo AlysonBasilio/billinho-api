@@ -9,4 +9,6 @@ RSpec.describe Invoice, type: :model do
   it { should validate_presence_of(:value) }
   it { should validate_presence_of(:expiration_date) }
   it { should validate_presence_of(:status) }
+  it { should define_enum_for(:status).with(Aberta: 0, Atrasada: 1 , Paga: 2) }
+
 end

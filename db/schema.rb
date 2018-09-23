@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_23_020548) do
+ActiveRecord::Schema.define(version: 2018_09_23_022556) do
 
   create_table "institutions", force: :cascade do |t|
     t.string "name", null: false
@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(version: 2018_09_23_020548) do
   end
 
   create_table "invoices", force: :cascade do |t|
-    t.decimal "value"
-    t.date "expiration_date"
-    t.string "status"
-    t.integer "registration_id"
+    t.decimal "value", null: false
+    t.date "expiration_date", null: false
+    t.integer "status", default: 0, null: false
+    t.integer "registration_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["registration_id"], name: "index_invoices_on_registration_id"
@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2018_09_23_020548) do
     t.string "cpf", null: false
     t.date "birth_date"
     t.integer "phone"
-    t.integer "gender", default: 0
-    t.integer "payment_method", default: 0
+    t.integer "gender", default: 0, null: false
+    t.integer "payment_method", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cpf"], name: "index_students_on_cpf", unique: true
