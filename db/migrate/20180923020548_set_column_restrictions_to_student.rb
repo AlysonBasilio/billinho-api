@@ -1,4 +1,4 @@
-class SetColumnRestritionsToStudent < ActiveRecord::Migration[5.2]
+class SetColumnRestrictionsToStudent < ActiveRecord::Migration[5.2]
   def up
     add_index :students, :name, unique: true
     change_column :students, :name, :string, null: false

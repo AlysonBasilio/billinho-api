@@ -1,4 +1,4 @@
-class SetColumnRestritionsToInvoice < ActiveRecord::Migration[5.2]
+class SetColumnRestrictionsToInvoice < ActiveRecord::Migration[5.2]
   def up
     change_column :invoices, :value, :decimal, null: false
     change_column :invoices, :expiration_date, :date, null: false

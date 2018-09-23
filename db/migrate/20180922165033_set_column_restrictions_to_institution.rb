@@ -1,4 +1,4 @@
-class SetColumnRestritionsToInstitution < ActiveRecord::Migration[5.2]
+class SetColumnRestrictionsToInstitution < ActiveRecord::Migration[5.2]
   def up
     add_index :institutions, :name, unique: true
     change_column :institutions, :name, :string, null: false
