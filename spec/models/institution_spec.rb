@@ -9,8 +9,13 @@ RSpec.describe Institution, type: :model do
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:cnpj) }
   it { should validate_presence_of(:institution_type) }
-  it { should validate_uniqueness_of(:name).ignoring_case_sensitivity }
-  it { should validate_uniqueness_of(:cnpj).ignoring_case_sensitivity }
   it { should validate_numericality_of(:cnpj) }
   it { should define_enum_for(:institution_type).with(Universidade: 0, Escola: 1, Creche: 2) }
+
+  describe "uniqueness validations" do
+    subject { FactoryBot.create(:institution) }
+    it { should validate_uniqueness_of(:name).ignoring_case_sensitivity }
+    it { should validate_uniqueness_of(:cnpj).ignoring_case_sensitivity }
+  end
+
 end

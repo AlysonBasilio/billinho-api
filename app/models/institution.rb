@@ -7,6 +7,6 @@ class Institution < ApplicationRecord
 
   # validations
   validates_presence_of :name, :cnpj, :institution_type
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, :cnpj
   validates_numericality_of :cnpj, :only_integer => true
 end
