@@ -1,24 +1,37 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
+This README document what steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+## Ruby version
+2.4.4p296 (2018-03-28 revision 63013) [x64-mingw32]
 
-* Ruby version
+#### Install system dependencies
+```
+bundle install
+```
 
-* System dependencies
+#### Database creation
+```
+rails db:migrate
+```
 
-* Configuration
+#### How to run the test suite
+```
+rails db:migrate RAILS_ENV=test
+rails exec rspec
+```
 
-* Database creation
+#### Run
+```
+rails s
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## API Endpoints
+| Endpoint | Functionality | Data Constraints |
+| --- | --- | --- |
+| GET /institutions | Get a list of all registered institutions | |
+| POST /institutions | Register a new Institution | { "name": "[valid unique name]", "cnpj": "[only numbers]", "institution_type": "['Universidar', 'Escola' or 'Creche']" } |
+| GET /institutions/:id | Get institution data by id |   |
+| PUT /institutions/:id | Update Institution info by id | { "name": "[valid unique name]", "cnpj": "[only numbers]", "institution_type": "['Universidar', 'Escola' or 'Creche']" } |
+| DELETE /institutions/:id  | Delete institution by id | | |
