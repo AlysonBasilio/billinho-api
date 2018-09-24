@@ -30,7 +30,7 @@ class RegistrationsController < ApplicationController
       # Create Invoice
       @registration.invoices.create({value: $value, expiration_date: $payment_day, registration_id: @registration.id})
 
-      $payment_day = $first_payment_day.advance({months: 1})
+      $payment_day = $payment_day.advance({months: 1})
       $i += 1
     end
     json_response(@registration, :created)

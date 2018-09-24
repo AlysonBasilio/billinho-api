@@ -34,7 +34,7 @@ class StudentsController < ApplicationController
 
   def student_params
     # whitelist params
-    params.permit(:name, :cpf, :gender, :payment_method)
+    params.permit(:name, :cpf, :birth_date, :phone, :gender, :payment_method)
   end
 
   def set_student

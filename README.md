@@ -1,7 +1,7 @@
 # README
 
 This README document what steps are necessary to get the
-application up and running.
+application up and running. [Click here to see the Demo.](Demo.pdf)
 
 ## Ruby version
 2.4.4p296 (2018-03-28 revision 63013) [x64-mingw32]
