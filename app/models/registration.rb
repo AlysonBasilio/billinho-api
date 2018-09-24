@@ -19,7 +19,7 @@ class Registration < ApplicationRecord
   #     errors.add(:invoice_qty, "cannot be different from the number of invoices related to this registration")
   #   end
   # end
-
+  #
   # def validate_invoices_total_value
   #   if invoices.inject(0) {|sum, i| sum + i.value} != value
   #     errors.add(:value, "cannot be different of the sum of the invoices values related to this registration")

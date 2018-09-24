@@ -22,7 +22,7 @@ class InvoicesController < ApplicationController
 
   def invoice_params
     # whitelist params
-    params.permit(:value, :expiration_date, :status)
+    params.permit(:status)
   end
 
   def set_invoice
